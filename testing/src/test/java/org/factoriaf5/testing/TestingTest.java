@@ -3,6 +3,7 @@ package org.factoriaf5.testing;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.assertj.core.internal.IntArrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
@@ -147,7 +148,7 @@ public class TestingTest {
         //crear el objecto
         Testing testing = new Testing();
 
-        // Crear una lista de enteros para la prueba
+        // Crear una lista de ints para la prueba
         List<Integer> lista = new ArrayList<>();
         lista.add(1);
         lista.add(2);
@@ -163,4 +164,22 @@ public class TestingTest {
 
         assertEquals(esperado, result);
     }
+
+    @Test
+    public void testCalcularMedia() {
+        // crear el objeto
+        Testing testing = new Testing();
+
+        List<Integer> lista = new ArrayList<>();
+        lista.add(1);
+        lista.add(2);
+        lista.add(3);
+        lista.add(4);
+        lista.add(5);
+
+        double result = testing.calcularMedia(lista);
+        assertEquals(3, result);
+    }
+
+
 }
