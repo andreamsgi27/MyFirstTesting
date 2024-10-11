@@ -111,4 +111,21 @@ public class TestingTest {
         assertEquals(24, result);
         assertFalse(num < 0);
     }
+
+    @Test
+    public void testEsPrimo() {
+        //crear el objecto
+        Testing testing = new Testing();
+        
+        int num = 7;
+        int num2 = 2;
+        
+
+        // When - Cuando
+        boolean result = testing.esPrimo(num);
+        boolean result2 = testing.esPrimo(num2);
+
+        // Then - Entonces
+        assertEquals(true, result);
+    }
     }
