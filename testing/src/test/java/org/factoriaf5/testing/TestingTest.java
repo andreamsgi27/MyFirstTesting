@@ -1,14 +1,9 @@
 package org.factoriaf5.testing;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.assertj.core.internal.IntArrays;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class TestingTest {
@@ -44,6 +39,7 @@ public class TestingTest {
         assertEquals(true, result);
         assertTrue(num1 > 0);
         assertFalse(num1 < 0);
+        assertNotNull(result);
     }
 
     @Test
@@ -51,7 +47,6 @@ public class TestingTest {
         //crear el objecto
         Testing testing = new Testing();
         String cadena = "manzana";
-        char letra = 'a';
         
 
         // When - Cuando
@@ -59,6 +54,10 @@ public class TestingTest {
 
         // Then - Entonces
         assertEquals(3, result);
+        assertNotNull(result);
+        assertFalse(result == 4);
+        assertTrue(result == 3);
+
     }
 
     @Test
@@ -78,6 +77,10 @@ public class TestingTest {
         // Then - Entonces
         assertEquals(true, result);
         assertFalse(result2);
+        assertNotNull(result);
+        assertTrue(result);
+        assertTrue(result == true);
+        assertFalse(result == false);
     }
 
     @Test
@@ -94,6 +97,10 @@ public class TestingTest {
 
         // Then - Entonces
         assertEquals("otap aloh", result);
+        assertNotNull(result);
+        assertTrue(result.equals("otap aloh"));
+        assertFalse(result.equals("pato hola"));
+
     }
 
     @Test
@@ -119,15 +126,18 @@ public class TestingTest {
         Testing testing = new Testing();
         
         int num = 7;
-        int num2 = 2;
-        
+        int num2 = 12;
 
         // When - Cuando
         boolean result = testing.esPrimo(num);
-        boolean result2 = testing.esPrimo(num2);
+        boolean result2 =  testing.esPrimo(num2);
 
         // Then - Entonces
         assertEquals(true, result);
+        assertFalse(result2);
+        assertNotNull(result);
+        assertTrue(result == true);
+        assertFalse(result == false);
     }
     
     @Test
@@ -155,14 +165,21 @@ public class TestingTest {
         lista.add(3);
 
         List<String> result = testing.convertirAString(lista);
+        List<String> result2 = testing.convertirAString(lista);
 
         // Definir el resultado esperado (una lista de Strings)
         List<String> esperado = new ArrayList<>();
         esperado.add("1");
         esperado.add("2");
         esperado.add("3");
+        List<String> noEsperado = new ArrayList<>();
+        noEsperado.add("hola");
+        noEsperado.add("esto");
+        noEsperado.add("no");
 
         assertEquals(esperado, result);
+        assertNotEquals(noEsperado, result2);
+        assertNotNull(result);
     }
 
     @Test
@@ -179,6 +196,7 @@ public class TestingTest {
 
         double result = testing.calcularMedia(lista);
         assertEquals(3, result);
+        assertNotNull(result);
     }
 
     @Test
@@ -192,9 +210,10 @@ public class TestingTest {
         lista.add("tres");
 
         String result = testing.convertirListaAString(lista);
-
-
         assertEquals("UNO,DOS,TRES", result);
+        assertFalse(false, "TRES");
+        assertTrue(true, "UNO,DOS,TRES");
+        assertNotNull(result);
     }
 
 }
