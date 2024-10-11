@@ -181,5 +181,20 @@ public class TestingTest {
         assertEquals(3, result);
     }
 
+    @Test
+    public void testConvertirListaAString(){
+        //crear el objecto
+        Testing testing = new Testing();
+
+        List<String> lista = new ArrayList<>();
+        lista.add("uno");
+        lista.add("dos");
+        lista.add("tres");
+
+        String result = testing.convertirListaAString(lista);
+
+
+        assertEquals("UNO,DOS,TRES", result);
+    }
 
 }
