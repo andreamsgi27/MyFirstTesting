@@ -1,5 +1,8 @@
 package org.factoriaf5.testing;
 
+import java.util.*;
+
+import org.assertj.core.internal.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
@@ -55,5 +58,24 @@ public class TestingTest {
 
         // Then - Entonces
         assertEquals(3, result);
+    }
+
+    @Test
+    public void testContieneElemento() {
+        //crear el objecto
+        Testing testing = new Testing();
+        
+        String elemento = "hola";
+        String elemento2 = "jeje";
+        List<String> lista = List.of(new String[]{"hola", "mundo", "java"});
+        
+
+        // When - Cuando
+        boolean result = testing.contieneElemento(lista, elemento);
+        boolean result2 = testing.contieneElemento(lista, elemento2);
+
+        // Then - Entonces
+        assertEquals(true, result);
+        assertFalse(result2);
     }
     }
