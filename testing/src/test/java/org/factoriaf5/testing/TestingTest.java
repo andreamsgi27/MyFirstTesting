@@ -94,4 +94,21 @@ public class TestingTest {
         // Then - Entonces
         assertEquals("otap aloh", result);
     }
+
+    @Test
+    public void testFactorial() {
+        //crear el objecto
+        Testing testing = new Testing();
+        
+        
+        int num = 4;
+        
+
+        // When - Cuando
+        long result = testing.factorial(num);
+
+        // Then - Entonces
+        assertEquals(24, result);
+        assertFalse(num < 0);
+    }
     }
