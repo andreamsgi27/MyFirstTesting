@@ -78,4 +78,20 @@ public class TestingTest {
         assertEquals(true, result);
         assertFalse(result2);
     }
+
+    @Test
+    public void testRevertirCadena() {
+        //crear el objecto
+        Testing testing = new Testing();
+        
+        
+        String elemento1 = "hola pato";
+        
+
+        // When - Cuando
+        String result = testing.revertirCadena(elemento1);
+
+        // Then - Entonces
+        assertEquals("otap aloh", result);
+    }
     }
