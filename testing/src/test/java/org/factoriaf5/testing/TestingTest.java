@@ -1,5 +1,6 @@
 package org.factoriaf5.testing;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -140,6 +141,26 @@ public class TestingTest {
         // Then - Entonces
         assertEquals("Listo después de retraso", result);
     }
+    
+    @Test
+    public void testConvertirAString(){
+        //crear el objecto
+        Testing testing = new Testing();
 
+        // Crear una lista de enteros para la prueba
+        List<Integer> lista = new ArrayList<>();
+        lista.add(1);
+        lista.add(2);
+        lista.add(3);
 
+        List<String> result = testing.convertirAString(lista);
+
+        // Definir el resultado esperado (una lista de Strings)
+        List<String> esperado = new ArrayList<>();
+        esperado.add("1");
+        esperado.add("2");
+        esperado.add("3");
+
+        assertEquals(esperado, result);
     }
+}
