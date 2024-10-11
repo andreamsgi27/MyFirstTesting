@@ -41,4 +41,19 @@ public class TestingTest {
         assertTrue(num1 > 0);
         assertFalse(num1 < 0);
     }
+
+    @Test
+    public void testContarLetrasA() {
+        //crear el objecto
+        Testing testing = new Testing();
+        String cadena = "manzana";
+        char letra = 'a';
+        
+
+        // When - Cuando
+        int result = testing.contarLetrasA(cadena);
+
+        // Then - Entonces
+        assertEquals(3, result);
+    }
     }
