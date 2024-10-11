@@ -1,8 +1,7 @@
 package org.factoriaf5.testing;
 
-import java.util.*;
+import java.util.List;
 
-import org.assertj.core.internal.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
@@ -128,4 +127,19 @@ public class TestingTest {
         // Then - Entonces
         assertEquals(true, result);
     }
+    
+    @Test
+    public void testMensajeConRetraso() throws InterruptedException {
+        //daba error todo el tiempo porque era poniendo el throws arriba
+        //crear el objecto
+        Testing testing = new Testing();
+        
+        // When - Cuando
+        String result = testing.mensajeConRetraso();
+        
+        // Then - Entonces
+        assertEquals("Listo después de retraso", result);
+    }
+
+
     }
