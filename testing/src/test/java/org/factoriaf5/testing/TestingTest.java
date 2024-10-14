@@ -1,10 +1,15 @@
 package org.factoriaf5.testing;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class TestingTest {
@@ -201,21 +206,17 @@ public class TestingTest {
             testing.calcularMedia(List.of()); // Lista vacía
         });
 
-        List<Integer> listaConNulos = new ArrayList<>();
-        listaConNulos.add(null);
-        listaConNulos.add(null);
-
         IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> {
-            testing.calcularMedia(listaConNulos);
+            testing.calcularMedia(null);
         });
+        assertEquals("La lista no puede ser nula o vacía", exception2.getMessage());
 
         
 
         double result = testing.calcularMedia(lista);
 
-        assertEquals(3, result);
+        assertEquals(3.00, result);
         assertNotNull(result);
-        assertEquals("La lista no puede ser nula o vacía", exception2.getMessage());
         assertEquals("La lista no puede ser nula o vacía", exception.getMessage());
     }
 
