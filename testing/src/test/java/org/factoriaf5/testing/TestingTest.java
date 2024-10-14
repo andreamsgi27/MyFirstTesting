@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 public class TestingTest {
@@ -34,7 +35,6 @@ public class TestingTest {
 
         // When - Cuando
         boolean result = testing.checkPositivo(num1);
-
         // Then - Entonces
         assertEquals(true, result);
         assertTrue(num1 > 0);
@@ -110,14 +110,18 @@ public class TestingTest {
         
         
         int num = 4;
+        int num2 = -4;
         
 
         // When - Cuando
         long result = testing.factorial(num);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            testing.factorial(-5);});
 
         // Then - Entonces
         assertEquals(24, result);
         assertFalse(num < 0);
+        assertEquals("Factorial no definido para números negativos", exception.getMessage());
     }
 
     @Test
@@ -193,10 +197,26 @@ public class TestingTest {
         lista.add(3);
         lista.add(4);
         lista.add(5);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            testing.calcularMedia(List.of()); // Lista vacía
+        });
+
+        List<Integer> listaConNulos = new ArrayList<>();
+        listaConNulos.add(null);
+        listaConNulos.add(null);
+
+        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            testing.calcularMedia(listaConNulos);
+        });
+
+        
 
         double result = testing.calcularMedia(lista);
+
         assertEquals(3, result);
         assertNotNull(result);
+        assertEquals("La lista no puede ser nula o vacía", exception2.getMessage());
+        assertEquals("La lista no puede ser nula o vacía", exception.getMessage());
     }
 
     @Test
@@ -209,11 +229,26 @@ public class TestingTest {
         lista.add("dos");
         lista.add("tres");
 
+        List<String> lista2 = new ArrayList<>();
+        lista2.add("uno");
+        lista2.add(null);
+        lista2.add("tres");
+
+        List<String> lista3 = new ArrayList<>();
+        lista3.add(null);
+        lista3.add(null);
+        lista3.add(null);
+
         String result = testing.convertirListaAString(lista);
+        String result2 = testing.convertirListaAString(lista2);
+        String result3 = testing.convertirListaAString(lista3);
+
         assertEquals("UNO,DOS,TRES", result);
         assertFalse(false, "TRES");
         assertTrue(true, "UNO,DOS,TRES");
         assertNotNull(result);
+        assertEquals("UNO,NULL,TRES", result2);
+        assertEquals("NULL,NULL,NULL", result3);
     }
 
 }
