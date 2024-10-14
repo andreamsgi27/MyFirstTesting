@@ -37,7 +37,10 @@ public class TestingTest {
         //crear el objecto
         Testing testing = new Testing();
         int num1 = 5;
-
+        int num2 = -5;
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            testing.checkPositivo(num2);
+        });
         // When - Cuando
         boolean result = testing.checkPositivo(num1);
         // Then - Entonces
@@ -45,6 +48,8 @@ public class TestingTest {
         assertTrue(num1 > 0);
         assertFalse(num1 < 0);
         assertNotNull(result);
+        //assertEquals("El número no puede ser negativo", result2);
+        assertEquals("El número no puede ser negativo", exception.getMessage());
     }
 
     @Test
@@ -136,10 +141,12 @@ public class TestingTest {
         
         int num = 7;
         int num2 = 12;
+        int num3 = 0;
 
         // When - Cuando
         boolean result = testing.esPrimo(num);
         boolean result2 =  testing.esPrimo(num2);
+        boolean result3 =  testing.esPrimo(num3);
 
         // Then - Entonces
         assertEquals(true, result);
@@ -147,6 +154,7 @@ public class TestingTest {
         assertNotNull(result);
         assertTrue(result == true);
         assertFalse(result == false);
+        assertFalse(result3);
     }
     
     @Test
