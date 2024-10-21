@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -252,26 +251,26 @@ public class TestingTest {
         lista.add(3);
         lista.add(4);
         lista.add(5);
+        double result = testing.calcularMedia(lista);
+
+        assertEquals(3.00, result);
+        
+    }
+
+    @Test
+    public void testCalcularMediaVacia() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             testing.calcularMedia(List.of()); // Lista vacía
         });
-
+        assertEquals("La lista no puede ser nula o vacía", exception.getMessage());
+    }
+    
+    @Test
+    public void testCalcularMediaNula() {
         IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> {
             testing.calcularMedia(null);
         });
         assertEquals("La lista no puede ser nula o vacía", exception2.getMessage());
-
-        
-
-        double result = testing.calcularMedia(lista);
-
-        assertEquals(3.00, result);
-        assertNotNull(result);
-        assertEquals("La lista no puede ser nula o vacía", exception.getMessage());
-    }
-
-    @Test
-    public void testCalcularMediaMal() {
     }
 
     @Test
